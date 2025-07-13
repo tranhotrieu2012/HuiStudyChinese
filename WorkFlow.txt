@@ -1,0 +1,82 @@
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo4LCJpYXQiOjE3NTI0MDI4MDIsImV4cCI6MTc1MzAwNzYwMn0.8CF8D7uXZSldwgRSko011QPVp_pne8mn826_bgbeZ2M
+1.Xây dựng cấu trúc MySQL
+
+2.Thiết kế API Backend
+  2.1 Chọn công nghệ
+	. Dùng NodeJS
+	. Express
+  2.2 Thiết lập dự án
+	. Kết nối MYSQL
+	. Thiết lập folder controllers, routes, models, middlewares
+  2.3 Viết API theo chức năng
+	| Module          | Đường API cần                                                  |
+| --------------- | -------------------------------------------------------------- |
+| 🔐 Auth         | `/auth/register`, `/auth/login`, `/auth/reset-password`        |
+| 👤 User         | `/users/:id`, `/users/roles`, `/users/update-profile`          |
+| 📚 Classes      | `/classes`, `/classes/:id`, `/classes/:id/lessons`             |
+| 🧑‍🏫 Giáo viên    | `/teachers/requests`, `/teachers/messages`, `/teacher/classes` |
+| 🛒 Store        | `/products`, `/products/:id`, `/cart`, `/orders`               |
+| ⚙️ Hệ thống     | `/notifications`, `/activity-logs`, `/translation`             |
+
+  2.4 Các câu lenh de khoi taO
+	. mkdir name-project
+	. cd name-project
+	. npm init -y
+     Cài đặt các thư viện cần thiết
+	.npm install express cors dotenv mysql2 bcryptjs jsonwebtoken nodemailer
+	.npm install --save-dev nodemon
+  2.5 Cau truc thu muc chuan
+	name-project-backend/
+	├── config/            # cấu hình database, mail
+	├── controllers/       # xử lý logic các route
+	├── routes/            # khai báo các API endpoint
+	├── middlewares/       # auth, error
+	├── models/            # query DB (hoặc dùng ORM như Sequelize sau)
+	├── utils/             # hàm dùng chung (gửi mail, tạo token,...)
+	├── .env
+	├── server.js
+
+
+3.Thiết kế giao diện (REACT)
+  3.1 Thiết lập fronteng
+	npx create-react-app huistudy-frontend
+	npm install axios react-router-dom tailwindcss
+
+  3.2. Chia layout theo vai trò: StudentDashboard, TeacherDashboard, AdminDashboard
+
+	Trang:
+		/login, /register
+
+		/dashboard
+
+		/classes, /classes/:id
+
+		/store, /product/:id
+
+		/profile, /cart, /orders
+
+
+  3.3 Kết nối API bằng Axios
+
+
+4.Kiểm thử + seed dữ lieu
+   .Tạo file seed.sql để test nhanh hơn
+   . Dùng Postman để test tat ca API
+   . Chay giao dien va kiem tra hoat dong full flow: Dang Nhap, Vao lop hoc, nhan tin voi  	giao vien, dat hang, ...
+
+5. Đưa lên production (sau khi test ổn định)
+
+
+| Thành phần   | Đề xuất triển khai                 |
+| ------------ | ---------------------------------- |
+| Backend      | Render.com, Railway, VPS           |
+| Frontend     | Vercel / Netlify                   |
+| MySQL DB     | PlanetScale, Railway, hoặc RDS     |
+| Tài liệu ảnh | Cloudinary, Firebase Storage       |
+| Domain       | Mua tại Namecheap, gắn vào hosting |
+| CI/CD        | GitHub Actions (nếu chuyên nghiệp) |
+
+
+6.Tối ưu hóa UI/UX
+
+7.Triển khai hosting
