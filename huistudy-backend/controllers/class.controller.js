@@ -23,10 +23,13 @@ exports.getClassDetail = async (req, res) => {
     const classInfo = await ClassModel.getClassById(req.params.id);
     if (!classInfo)
       return res.status(404).json({ message: "Không tìm thấy lớp học" });
+
+    res.json({ class: classInfo }); // ✅ thêm dòng này
   } catch (error) {
     res.status(500).json({ message: "Lỗi lấy chi tiết lớp học", error: error });
   }
 };
+ 
 
 exports.joinClass = async (req, res) => {
   try {

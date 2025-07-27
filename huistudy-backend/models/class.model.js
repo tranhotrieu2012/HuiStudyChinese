@@ -27,7 +27,7 @@ const ClassModel = {
   },
   getAllClasses: async () => {
     const [rows] = await db.execute(
-      `SELECT c.* u.full_name AS teacher_name
+      `SELECT c.*, u.full_name AS teacher_name
       FROM classes c
       JOIN users u ON c.teacher_id = u.id`
     );

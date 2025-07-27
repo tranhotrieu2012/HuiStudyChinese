@@ -86,6 +86,7 @@ exports.forgotPassword = async (req, res) => {
 // --------------- Reset password ---------------
 exports.resetPassword = async (req, res) => {
   const { token, newPassword } = req.body;
+
   try {
     const record = await AuthModel.verifyResetToken(token);
     if (!record)
